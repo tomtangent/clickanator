@@ -1,0 +1,17 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /stylesheets
+  static_dir: stylesheets
+- url: /images
+  static_dir: images
+- url: /.* #any path that begins with /
+  script: main.app #go to main.py and look for app variable (app = webapp2.WSGIApplication)
+
+libraries:
+- name: jinja2
+  version: latest
+- name: webapp2 #helps set up the web, paths, the request
+  version: latest

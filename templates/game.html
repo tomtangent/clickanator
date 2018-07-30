@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<title>Clickanator</title>
+<link rel="stylesheet" href="/stylesheets/game.css">
+
+<small>V0.3</small>
+
+<div id = "game">
+  <div id = "playerList">
+  {% for player in players %}
+    <div class = "playerDisplay">
+      {% if current_player and current_player.key == player.key %}
+        <strong>{{player.name}}  {{player.score}}</strong><br>
+      {% else %}
+        {{player.name}}  {{player.score}}<br>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+
+  <div id = "buttonSection">
+    <form action = '/game?key={{current_player.key.urlsafe()}}' method = 'post'>
+      <button id = "theButton"> Click </button>
+    </form>
+  </div>
+
+  <div id = "chatSection">
+    Chat or maybe news feed here WIP
+  </div>
+</div>
+
+<form action='/'>
+  <button id = "logout"> Logout </button>
+</form>
